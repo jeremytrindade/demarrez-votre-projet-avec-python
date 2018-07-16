@@ -6,20 +6,21 @@ quotes = [
     "On doit pouvoir choisir entre s'écouter parler et se faire entendre."
 ]
 
-characters = [
-    "alvin et les Chipmunks", 
-    "Babar", 
-    "betty boop", 
-    "calimero", 
-    "casper", 
-    "le chat potté", 
-    "Kirikou"
-]
+#characters = [
+#    "alvin et les Chipmunks", 
+#    "Babar", 
+#    "betty boop", 
+#    "calimero", 
+#    "casper", 
+#    "le chat potté", 
+#    "Kirikou"
+#]
 # Read values from a JSON file
 def read_value_from_json():
   values = []
-  with open ('characters.json') as f:
+  with open('characters.json') as f:
     # Load all the data contained in my file. data = entries
+    data = json.load(f) # ça va charger le fichier OPEN et transformer les donner lamba en json
     for entry in data:
         values.append(entry['character'])
     return values
@@ -31,6 +32,10 @@ def get_random_quote(my_list):
   item = my_list[rand_numb] # get a quote from a list
   return item # return the item
     
+def random_character():
+  all_values = read_value_from_json()
+  return get_random_quote(all_values)
+
 def capitalize(words):
   for word in words:
     word.capitalize()
@@ -43,5 +48,5 @@ def message(character, quote):
 user_answer = input("Tapez entrée pour conaitre une autre citation ou B pour quitter le programe.")
 
 while user_answer != "B":
-  print(message(get_random_quote(characters), get_random_quote(quotes)))
+  print(message(get_random_quote(characters), random_character()))
   user_answer = input("Tapez entrée pour conaitre une autre citation ou B pour quitter le programe.")
