@@ -16,8 +16,8 @@ characters = [
 ]
 
 def get_random_quote(my_list):
-  # TODO: get a random number
-  item = my_list[0]
+  rand_numb = random.randint(0,len(my_list)-1)
+  item = my_list[rand_numb]
   return item
     
 def capitalize(words):
@@ -27,10 +27,10 @@ def capitalize(words):
 def message(character, quote):
   capitalize(character)
   capitalize(quote)
-  return "{} a dit : {}".format(character, quote))
+  return "{} a dit : {}".format(character, quote)
 
 user_answer = input("Tapez entrée pour conaitre une autre citation ou B pour quitter le programe.")
 
 while user_answer != "B":
-  print(message(get_random_item(characters), get_random_item(quotes)))
+  print(message(get_random_quote(characters), get_random_quote(quotes)))
   user_answer = input("Tapez entrée pour conaitre une autre citation ou B pour quitter le programe.")
