@@ -1,4 +1,5 @@
 import random
+import json
 
 quotes = [
     "Ecoutez-moi, Monsieur Shakespeare, nous avons beau être ou ne pas être, nous sommes !", 
@@ -16,9 +17,12 @@ characters = [
 ]
 # Read values from a JSON file
 def read_value_from_json():
-  # Create a new empty list
-  # Open a json file with my objects
-  # Load all the data contained in my file
+  values = []
+  with open ('characters.json') as f:
+    # Load all the data contained in my file. data = entries
+    for entry in data:
+        values.append(entry['character'])
+    return values
   # add each item in my list
   # return my completed list
 
